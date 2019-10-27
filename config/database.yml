@@ -1,0 +1,21 @@
+#---------------------------------
+# development mode => local環境
+#---------------------------------
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: hello_app_dev
+  pool: 5
+  username: root
+  password: 
+  host: localhost
+  
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: hello_app_prod
+  pool: 5
+  username: root
+  password: 
+  host: localhost
+  

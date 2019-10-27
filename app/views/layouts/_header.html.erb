@@ -1,0 +1,79 @@
+<div class='title-header'>
+  <div class="py-3">
+    <div class= "text-primary">
+      <div class='row flex-nowrap justify-content-between align-items-center'>
+        <div class='col-4 offset-4 text-center'>
+          <h1><%= link_to "掲示板", root_path %></h1>
+        </div>
+        <div class='col-4 text-right'>
+          <p><%= link_to "SPORTS LIST", sports_path %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <ul class="nav bg-light border justify-content-start">
+    <li class="nav-item">
+      <%= link_to "募集情報", microposts_path, class: "nav-link active" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "チーム機能", teams_path, class: "nav-link active" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "ブログ", blogs_path, class: "nav-link active" %>
+    </li>
+    <li class="nav-item mr-auto">
+      <%= link_to "施設・コート", '#', class: "nav-link active" %>
+    </li>
+    <li class="nav-item">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="キーワード検索" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+      </form>
+    </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to('ログアウト', destroy_user_session_path, class: "nav-link active") %>        
+        </li>
+        <li>
+          <%= link_to "マイプロフィール", user_path(current_user) %>
+        </li>
+
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "新規登録", new_user_registration_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to('ログイン', new_user_session_path, class: "nav-link active") %>  
+        </li>
+      <% end %>
+
+  </ul>
+
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag "tennis-back.png", alt: "tennis logo", class: "d-block w-100" %>
+        <div class="carousel-caption">
+            <h1>スポーツ仲間がみつかる、広がる！</h1>
+            <p>スポーツをもっと楽しむためのSNS</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "tennis_play.jpg", alt: "Rails logo", class: "d-block w-100" %>
+        <div class="carousel-caption ">
+            <h1>スポーツ仲間がみつかる、広がる！</h1>
+            <p>スポーツをもっと楽しむためのSNS</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>

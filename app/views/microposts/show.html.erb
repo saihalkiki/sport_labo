@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h2>募集要項の詳細</h2>
+
+<p>
+  <strong>ユーザーID:</strong>
+  <%= @micropost.user_id %>
+</p>
+
+<p>
+  <strong>ユーザーメールアドレス:</strong>
+  <%= @micropost.user.email %>
+</p>
+
+<p>
+  <strong>競技:</strong>
+  <%= @micropost.sport.name %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @micropost.content %>
+</p>
+
+<p>
+  <strong>開催エリア:</strong>
+  <%= @micropost.prefecture.name %>
+</p>
+
+<!--目的<button class="btn btn-primary" type="submit">このボタンを押して参加をできるようにしたい</button>-->
+<!--current_userでない場合ボタンを表示する-->
+<% if user_signed_in? %>
+  <%= render 'participation_form' %>
+  <p class = "mt-3"><span>参加申し込み人数: </span><%= @micropost.participations.count %></p>
+<% else %>
+  <h5>参加申し込みをしたい場合は先に<%= link_to('ログイン', new_user_session_path, class: "nav-link active") %>をしてください</h5>
+<% end %>
+  <br></br>
+
+<% if user_signed_in? && current_user.id == @micropost.user_id %>
+  <%= link_to '編集', edit_micropost_path(@micropost) %><br>
+<% end %>
+<%= link_to '募集一覧に戻る', microposts_path %>
+</br>
+<%= link_to 'トップページに戻る', root_path %>

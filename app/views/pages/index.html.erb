@@ -1,0 +1,41 @@
+<!-- table layout1 -->
+<div class="row">
+  <div class="col-3">
+    <table class="table">
+      <caption class="text-center"><%= link_to 'もっとみる', sports_path%></caption>
+      <thead>
+        <tr>
+          <th scope="col">スポーツ一覧</th>
+          <th scope="col"></th>
+        </tr>
+        <% @sports.each do |sport| %>
+          <tr>
+            <td scope="row">
+              <%= link_to sport.name, sport_path(sport) %>
+            </td>
+            <td class ="text-muted" scope="row">＞</td>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
+  </div>
+  <div class="col-9">
+    <table class="table">
+      <caption class="text-center"><%= link_to 'もっとみる', microposts_path%></caption>
+      <thead>
+        <tr>
+          <th scope="col">募集情報  計<%= @microposts.count%>件</th>
+          <th scope="col"><%= link_to("初期表示", url_for)%>｜<%= link_to("新着順", url_for(sort: 1)) %>｜<%= link_to("古い順", url_for(sort: 2))%> </th>
+          <!--  logより Parameters: {"sort"=>"1"} logより Parameters: {"sort"=>"2"}-->
+        </tr>
+        <% @microposts.each do |micropost| %>
+          <tr>
+            <td scope="row" style="width:40%"><%= micropost.content %></td>
+            <td scope="row" style="width:50%"><%= micropost.prefecture.name %></td>
+            <td class ="text-muted" scope="row" style="width:10%">＞</td>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
+  </div>
+</div>

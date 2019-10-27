@@ -1,0 +1,15 @@
+<div class="row col-8">
+  <h1><%= @team.name%></h1>
+  <p><%= @team.created_at %></p>
+  <p>内容：<%= @team.context %></p>
+  <!--テキストの改行表示は教科書を確認-->
+</div>
+
+<% if user_signed_in? %>
+  <%= link_to "チームを作成する", new_blog_path %>
+<% else %>
+  <%= link_to "チームを作成するにはログインをしてください", new_user_session_path %>
+<% end %>
+<br>
+<%= link_to 'チーム一覧をみる', teams_path %><br>
+<%= link_to 'トップページに戻る', root_path %>

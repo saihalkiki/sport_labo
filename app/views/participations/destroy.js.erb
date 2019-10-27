@@ -1,0 +1,2 @@
+$("#participation_form").html("<%= escape_javascript(render('microposts/participate')) %>");
+$("#participations").html('<%= @micropost.participations.count %>');

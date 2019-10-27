@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h5>スポーツブログ</h5>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">タイトル</th>
+      <th scope="col">投稿者アドレス</th>
+      <th scope="col">投稿日</th>
+      <th scope="col">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= link_to "#{blog.title}", blog, class: "font-weight-bold text-body" %></td>
+        <td><%= blog.user.email %></td>
+        <td><%= blog.created_at %></td>
+        <td><%= link_to "編集", edit_blog_path(current_user) %>｜<%= link_to "削除", blog, method: :delete, data: { confirm: "消去してもよろしいでしょうか？" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if user_signed_in? %>
+  <%= link_to "ブログを投稿する", new_blog_path %>
+<% else %>
+  <%= link_to "ブログを投稿するにはログインをしてください", new_user_session_path %>
+<% end %>
+<br>
+
+<%= link_to 'トップページに戻る', root_path %>

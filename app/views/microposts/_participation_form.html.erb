@@ -1,0 +1,9 @@
+<% unless (current_user == @user) %>
+  <div id="participation_form">
+  <% if @micropost.participated?(current_user) %>
+    <%= render 'not_participate' %>
+  <% else %>
+    <%= render 'participate' %>
+  <% end %>
+  </div>
+<% end %>

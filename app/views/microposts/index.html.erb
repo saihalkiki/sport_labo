@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h5>募集一覧</h5>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ユーザーメールアドレス</th>
+      <th scope="col">競技</th>
+      <th scope="col">募集内容</th>
+      <th scope="col">開催エリア</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @microposts.each do |micropost| %>
+      <tr>
+        <td><%= micropost.user.email %></td>
+        <td><%= micropost.sport.name %></td>
+        <td><%= micropost.content %></td>
+        <td><%= micropost.prefecture.name %></td>
+        <td><%= link_to '詳細', micropost %></td>
+
+        <% user_signed_in? && if current_user.id == micropost.user_id %>
+          <td><%= link_to '編集', edit_micropost_path(micropost) %></td>
+          <td><%= link_to '削除', micropost, method: :delete, data: { confirm: '本当に消去してもよろしいですか?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新しい募集を作成', new_micropost_path %>
+<br>
+<%= link_to 'トップページに戻る', root_path %>

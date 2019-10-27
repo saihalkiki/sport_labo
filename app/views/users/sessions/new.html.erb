@@ -1,0 +1,36 @@
+<div class="card m-5" style="width: 30rem;">
+  <div class="card-header">
+    <h5 class="text-center mt-2">ログイン</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email, 'メールアドレス入力' %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'form-control' %>
+        </div>
+
+        <div class="field mt-3">
+          <%= f.label :password, 'パスワード入力' %><br />
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード ( #{ @minimum_password_length } 文字以上 ) ", class: 'form-control' %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field mt-3">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, "ログインしたままにする" %>
+          </div>
+        <% end %>
+
+        <div class="actions mt-2 mb-2">
+          <%= f.submit "ログイン", class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
+
+    </li>
+    <li class="list-group-item">
+      <%= render "users/shared/links" %>
+      <%= link_to "トップページへ戻る", root_path %>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,3 @@
+<%= form_for(Participation.find_by(micropost_id: @micropost.id), url: micropost_participation_path(@micropost), html: { method: :delete }, remote: true) do |f| %>
+  <%= f.submit "申し込みキャンセル", class: "btn btn-outline-danger" %>
+<% end %>

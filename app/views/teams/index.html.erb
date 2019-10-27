@@ -1,0 +1,50 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">チーム名</th>
+      <th scope="col">管理者</th>
+      <th scope="col">参加メンバー</th>
+      <th scope="col">競技</th>
+      <th scope="col">活動エリア</th>
+      <th scope="col">活動内容</th>
+      <th scope="col">" "</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+        <td><%= team.user.email %></td>
+        <td>メンバーのアドレスの総数を表示</td>
+        <td><%= team.sport.name %></td>
+        <td><%= team.prefecture.name %></td>
+        <td><%= team.context %></td>
+        <td><%= link_to '詳細', team %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to '新しいチームを作成', new_team_path %>
+<br>
+</br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">募集一覧</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.user.microposts.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to '新しい募集を作成', new_micropost_path %>
+<br>
+<%= link_to 'トップページに戻る', root_path %>

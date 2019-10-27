@@ -1,0 +1,15 @@
+<h1>募集要項の作成</h1>
+
+<% if user_signed_in? %>
+  <p>ログインユーザーID：<%= current_user.id %></p>
+  <p>ログインメールアドレス：<%= current_user.email %></p>
+ 
+<%= render 'form', micropost: @micropost %>
+
+<% else %>
+  <p>先に<%= link_to('ログイン', new_user_session_path) %>をしてください</p>
+
+<% end %>
+
+<%= link_to '募集一覧へ', microposts_path %>
+<%= link_to "トップページへ", root_path %>
