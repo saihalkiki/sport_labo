@@ -11,6 +11,7 @@ gem 'jbuilder',     '2.6.4'
 gem 'mysql2'
 gem 'devise'
 gem 'faker'
+gem "mini_magick"
 
 
 group :development, :test do

@@ -2,7 +2,7 @@
 @import "vender/bootstrap4/bootstrap-grid";
 @import "vender/bootstrap4/bootstrap-reboot";
 
-img {
+.image_size_m {
   width: 100%;
   height: 300px;
   object-fit: cover;

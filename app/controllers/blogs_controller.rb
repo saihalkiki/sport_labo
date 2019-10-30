@@ -5,15 +5,15 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.all
   end
-  
+
   def show
     @blog = Blog.find(params[:id])
   end
-  
+
   def new
     @blog = Blog.new
   end
-  
+
   def create
     @blog = current_user.blogs.new(blog_params)
     if @blog.save
@@ -24,7 +24,7 @@ class BlogsController < ApplicationController
       render 'blogs/new' #エラー更新後、URLが「…/blogs」に変更されてしまう！
     end
   end
-  
+
   def edit
     @blog = Blog.find(params[:id])
   end
@@ -38,17 +38,17 @@ class BlogsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     Blog.find(params[:id]).destroy
     flash[:success] = "ブログを削除しました"
     redirect_to blogs_url
   end
-  
+
   private
 
     def blog_params
-      params.require(:blog).permit(:title, :context, :user_id)
+      params.require(:blog).permit(:title, :context, :user_id, :avatar)
     end
 
 end

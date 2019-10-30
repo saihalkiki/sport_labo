@@ -2,6 +2,9 @@
   <h1><%= @blog.title %></h1>
   <p><%= @blog.created_at %></p>
   <p>内容：<%= @blog.context %></p>
+  <% if @blog.avatar.attached? %>
+    <%= image_tag @blog.avatar.variant(resize:'640x640').processed %>
+  <% end %>
   <!--テキストの改行表示は教科書を確認-->
 </div>
 
